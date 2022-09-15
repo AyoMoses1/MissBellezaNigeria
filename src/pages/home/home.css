@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.landingContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px 0;
+}
+.landingContainer{
+    padding: 20px 10px;
+}
+.card-content{
+    text-align: center;
+    background: #000;
+    color: goldenrod;
+}
+
+h5{
+    font-size: 20px;
+    line-height: 0.01;
+    font-family: 'Pacifico', cursive;
+}
+h6{
+    font-size: 14px;
+}
+button{
+    background: goldenrod;
+    color: black;
+}
+.button-container{
+    background: goldenrod;
+}
+a{
+    text-decoration: none;
+    width: 100%;
+}
+button{
+    width: 100%;
+    color: #000 !important;
+    font-weight: 800 !important;
+}
+
+
+

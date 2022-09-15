@@ -1,0 +1,58 @@
+.card-container{
+    background: #000 !important;
+    color: goldenrod !important;
+    border: 1px solid goldenrod !important;
+}
+.card-container span:last-child{
+    color: white;
+}
+
+.card-container h4{
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: goldenrod;
+    text-align: start !important;
+}
+.card-container h6{
+    font-size: 18px;
+    font-weight: 800;
+    color: goldenrod;
+    text-align: start !important;
+}
+.card-content{
+    border-bottom: 1px solid goldenrod;
+}
+.vote-dropdown{
+    color: goldenrod !important;
+    width: 100px;
+}
+.expand-icon{
+    color: goldenrod !important;
+    width: 100px !important;
+}
+.card-actions{
+    display: flex !important;
+    justify-content: space-between;
+}
+.vote{
+    background: goldenrod !important;
+}
+.voting-form{
+    background: white;
+}
+.contestant-image{
+    height: 400px;
+    object-fit: contain;
+}
+
+input.input-error, select.input-error{
+    border-color: red !important; 
+}
+
+.error-text{
+    color: red;
+}
+.avatar{
+    background-color: goldenrod !important;
+}
