@@ -59,7 +59,7 @@ export default function Checkout() {
 
 console.log(state)
 
-  const publicKey = "pk_live_25afddd9c879b95a84956f01333bec6062ba81b8"
+  const publicKey = "pk_live_8124f7f5eee686ba67d38d054a6750951e0a43d3"
   
   const [email, setEmail] = React.useState(state?.email)
   const [name, setName] = React.useState("ayo")

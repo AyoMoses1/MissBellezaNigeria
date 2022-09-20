@@ -16,7 +16,7 @@ export default function Home() {
           className='card-container'
           component="img"
           alt="green iguana"
-          height="400px"
+          height="300px"
           image="https://missbellezanigeria.com.ng/wp-content/uploads/2022/07/belley.jpg"
         />
         <CardContent className='card-content'>
