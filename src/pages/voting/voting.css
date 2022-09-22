@@ -1,9 +1,20 @@
 main{
     background: #000;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 .nav{
     background: goldenrod !important;
     color: #000 !important;
     display: flex !important;
     align-items: center;
+    height: 10vh;
+}
+
+.loader{
+    color: goldenrod !important;
 }
