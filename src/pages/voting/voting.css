@@ -4,7 +4,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 
 }
 .nav{
@@ -20,6 +20,9 @@ main{
 }
 .search-form{
     width: 100%;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }
 .search-form input{
     border: 1px solid goldenrod;
@@ -30,5 +33,30 @@ main{
     height: 100% !important;
     padding: 10px 20px;
     background: #000;
-    min-width: 50%;
+    width: 80%;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+.rank-btn{
+    background: goldenrod !important;
+    display: inline-block;
+    margin-top: 20px !important;
+    max-width: 200px;
+}
+.ranking{
+    margin-top: 50px;
+    display: flex !important;
+    justify-content: center;
+}
+.ranking .MuiDataGrid-cellContent{
+    color: goldenrod !important;
+}
+.css-1jbbcbn-MuiDataGrid-columnHeaderTitle{
+    color: goldenrod !important;
+}
+
+.css-1e2bxag-MuiDataGrid-root .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.MuiDataGrid-cell{
+    color: goldenrod;
 }

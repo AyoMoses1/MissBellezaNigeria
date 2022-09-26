@@ -24,6 +24,27 @@ import { collection, getDocs } from "firebase/firestore"
 import CircularProgress from '@mui/material/CircularProgress';
 import FormControl from '@mui/material/FormControl';
 import { FormHelperText, Input, InputLabel } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
+import { width } from '@mui/system';
+
+const columns = [
+  { 
+    field: 'Rank' , 
+    headerName: 'Rank', 
+    filterable: false,
+    renderCell:(index) =>  index.api.getRowIndex(index.row.id) + 1,
+    width: 20
+},
+  { field: 'name', headerName: 'Name', width:100},
+  { field: 'votes', headerName: 'Votes', type:'number' },
+
+  {
+    field: 'age',
+    headerName: 'Age',
+    type: 'number'
+  },
+];
+
 
 function Copyright() {
   return (
@@ -46,11 +67,22 @@ export default function Voting() {
   const [contestants, setContestants] = React.useState([])
   const [loading, setLoading] = React.useState(false)
   const [searchTerm, setSearchTerm] = React.useState('')
+  const [showRanking, setShowRanking] = React.useState(false)
+  const [rankingIndex, setRankingIndex] = React.useState([])
 
 
   const contestantsCollectionRef = collection(db, "contestants")
 
+  const newRows = contestants.map(cont => {
+    return {id: cont.id, name: cont.name, votes: cont.votes, age:cont.age}
+  })
+  const ranks=[]
+  const votes =  contestants.forEach( (cont) => {
+    ranks.push(cont)
+  })
 
+  ranks?.sort((a,b) => b.votes-a.votes)
+  
   React.useEffect(() => {
     const handleSearch = async() => {
       const docs = await getDocs(contestantsCollectionRef)
@@ -84,6 +116,9 @@ export default function Voting() {
   }, [])
 
 
+  const handleRanking = ()=> {
+    setShowRanking(prev => !prev)
+  }
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -97,6 +132,24 @@ export default function Voting() {
       </AppBar>
       
         <main>
+        <div className='btn-container'>
+          <Button className='rank-btn' variant='contained' onClick={handleRanking}> {showRanking? "Hide Ranking" : "See Ranking"}</Button>
+        </div>
+          {
+            showRanking ? 
+            <div style={{ height: 400, width: '100%' }} className='ranking'>
+              <DataGrid
+                rows={ranks}
+                columns={columns}
+                pageSize={16}
+                rowsPerPageOptions={[4]}
+                className='table'
+                // checkboxSelection
+                
+              />
+            </div>
+            :
+          <>
            {
             loading ? 
             <CircularProgress className='loader' /> 
@@ -118,6 +171,8 @@ export default function Voting() {
             </Grid>
           </Container>
         }
+        </>
+      }
         </main>
     </ThemeProvider>
   );
