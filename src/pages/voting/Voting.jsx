@@ -22,6 +22,8 @@ import './voting.css'
 import { db } from './../../firebase-config';
 import { collection, getDocs } from "firebase/firestore"
 import CircularProgress from '@mui/material/CircularProgress';
+import FormControl from '@mui/material/FormControl';
+import { FormHelperText, Input, InputLabel } from '@mui/material';
 
 function Copyright() {
   return (
@@ -43,10 +45,29 @@ export default function Voting() {
   const [data, setData] = React.useState([])
   const [contestants, setContestants] = React.useState([])
   const [loading, setLoading] = React.useState(false)
+  const [searchTerm, setSearchTerm] = React.useState('')
+
 
   const contestantsCollectionRef = collection(db, "contestants")
 
 
+  React.useEffect(() => {
+    const handleSearch = async() => {
+      const docs = await getDocs(contestantsCollectionRef)
+      setContestants(docs.docs.map((doc) => ({ ...doc.data(), id: doc.id})))
+      console.log(contestants, "contestants")
+      if(searchTerm.length){
+        const results = contestants.filter((cont) => {
+          return cont.name.toLowerCase().includes(searchTerm.toLowerCase())
+        })
+        setContestants(results)
+        console.log(results, "results")
+      }
+    }
+
+    handleSearch()
+  }, [searchTerm])
+  
 
   React.useEffect(() => {
 
@@ -54,6 +75,7 @@ export default function Voting() {
       setLoading(true)
       const docs = await getDocs(contestantsCollectionRef)
       setContestants(docs.docs.map((doc) => ({ ...doc.data(), id: doc.id})))
+      setData(docs.docs.map((doc) => ({ ...doc.data(), id: doc.id})))
       setLoading(false)
     }
 
@@ -63,7 +85,7 @@ export default function Voting() {
 
 
   return (
-    <ThemeProvider theme={theme} className="flex-loader">
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar position="relative" className='nav'>
         <Toolbar>
@@ -73,14 +95,21 @@ export default function Voting() {
           </Typography>
         </Toolbar>
       </AppBar>
+      
         <main>
-
            {
             loading ? 
             <CircularProgress className='loader' /> 
             :
             <Container sx={{ py: 8 }} maxWidth="lg">
             <Grid container spacing={4}>
+              <Grid item xs={12} sm={12} md={12}>
+                <FormControl className='search-form'>
+                  {/* <InputLabel htmlFor="my-input">Search Contestant</InputLabel>
+                  <Input id="my-input" aria-describedby="my-helper-text" /> */}
+                  <input  type="text" placeholder='Search Contestant' onChange={(e) => setSearchTerm(e.target.value)}/>
+                </FormControl>
+              </Grid>
               {contestants?.map((contestant) => (
                 <Grid item key={contestant.id} xs={12} sm={6} md={4}>
                   <ContestantCard details = {contestant}/>

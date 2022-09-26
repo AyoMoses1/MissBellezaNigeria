@@ -18,3 +18,17 @@ main{
 .loader{
     color: goldenrod !important;
 }
+.search-form{
+    width: 100%;
+}
+.search-form input{
+    border: 1px solid goldenrod;
+    color: goldenrod;
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    height: 100% !important;
+    padding: 10px 20px;
+    background: #000;
+    min-width: 50%;
+}

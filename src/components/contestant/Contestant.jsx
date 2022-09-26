@@ -60,7 +60,7 @@ const ContestantCard = ({details}) =>{
     setExpanded(!expanded);
   };
 
-  const voteOptions = [{label:'1 Vote(₦50)', price:50},{label:'10 Votes(₦500)', price:500},{label:'20 votes(₦1000)', price:1000},{label:'100 votes(₦5000)', price:5000},{label:'200 votes(₦10,000)', price:10000},{label:'400 votes(₦20,000)', price:20000},{label:'600 votes(₦30,000)', price:30000}];
+  const voteOptions = [{label:'10 Votes(₦500)', price:500},{label:'20 votes(₦1000)', price:1000},{label:'100 votes(₦5000)', price:5000},{label:'200 votes(₦10,000)', price:10000},{label:'400 votes(₦20,000)', price:20000},{label:'600 votes(₦30,000)', price:30000}, {label:'1000 Votes(₦50000)', price:50000}];
   const [expanded, setExpanded] = React.useState(false);
   
   return (
