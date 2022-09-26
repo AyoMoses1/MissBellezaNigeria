@@ -49,14 +49,8 @@ main{
     margin-top: 50px;
     display: flex !important;
     justify-content: center;
+    /* width: 100%; */
 }
 .ranking .MuiDataGrid-cellContent{
-    color: goldenrod !important;
-}
-.css-1jbbcbn-MuiDataGrid-columnHeaderTitle{
-    color: goldenrod !important;
-}
-
-.css-1e2bxag-MuiDataGrid-root .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.MuiDataGrid-cell{
-    color: goldenrod;
+    text-align: center;
 }

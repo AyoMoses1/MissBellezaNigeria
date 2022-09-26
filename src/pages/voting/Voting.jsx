@@ -33,15 +33,18 @@ const columns = [
     headerName: 'Rank', 
     filterable: false,
     renderCell:(index) =>  index.api.getRowIndex(index.row.id) + 1,
-    width: 20
+    width: 20,
+    headerAlign:'center'
+
 },
-  { field: 'name', headerName: 'Name', width:100},
-  { field: 'votes', headerName: 'Votes', type:'number' },
+  { field: 'name', headerName: 'Name', width:100, headerAlign:'center'},
+  { field: 'votes', headerName: 'Votes', type:'number',headerAlign:'center' },
 
   {
     field: 'age',
     headerName: 'Age',
-    type: 'number'
+    type: 'number',
+    headerAlign:'center'
   },
 ];
 
@@ -144,6 +147,16 @@ export default function Voting() {
                 pageSize={16}
                 rowsPerPageOptions={[4]}
                 className='table'
+                sx={{
+                  boxShadow: 2,
+                  border: 2,
+                  color:'goldenrod',
+                  borderColor: 'goldenrod',
+                  '& .MuiDataGrid-cell:hover': {
+                    color: 'primary.main',
+                    borderBottom: '1px solid goldenrod'
+                  },
+                }}
                 // checkboxSelection
                 
               />
